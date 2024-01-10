@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainView">
+   <children>
+      <Label layoutX="76.0" layoutY="21.0" text="Weather forecast for 5 days">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="78.0" layoutY="85.0" text="Your city">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="268.0" layoutY="85.0" text="Destination">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField layoutX="35.0" layoutY="127.0" promptText="Country" />
+      <TextField layoutX="35.0" layoutY="170.0" promptText="City" />
+      <TextField layoutX="236.0" layoutY="127.0" promptText="Country" />
+      <TextField layoutX="236.0" layoutY="170.0" promptText="City" />
+      <Label layoutX="34.0" layoutY="221.0" prefHeight="350.0" prefWidth="150.0" />
+      <Label layoutX="235.0" layoutY="221.0" prefHeight="350.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>
