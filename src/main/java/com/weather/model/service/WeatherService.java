@@ -4,6 +4,8 @@ import com.weather.model.Weather;
 import com.weather.model.client.OpenWeatherClient;
 import com.weather.model.client.WeatherClient;
 
+import java.io.IOException;
+
 public class WeatherService {
     private final WeatherClient weatherClient;
 
@@ -11,7 +13,7 @@ public class WeatherService {
         this.weatherClient = weatherClient;
     }
 
-    public Weather getWeather(String city, String country) {
+    public Weather getWeather(String city, String country) throws IOException {
         return weatherClient.getWeather(city, country);
     }
 }

@@ -1,16 +1,15 @@
 package com.weather.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 
 public class Weather {
-    private double minTemperature;
-    private double maxTemperature;
-    private String description;
-    private Date date;
+    private ArrayList<ForecastData> forecastData;
 
-    public Weather() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-        //this.date = sdf.format(date);
+    public Weather(ArrayList<ForecastData> forecastData) {
+        this.forecastData = forecastData;
+    }
+
+    public ArrayList<ForecastData> getForecastData() {
+        return forecastData;
     }
 }

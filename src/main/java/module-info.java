@@ -4,6 +4,7 @@ module WeatherApp {
     requires javafx.graphics;
     requires javafx.web;
     requires java.desktop;
+    requires com.google.gson;
 
     opens com.weather;
     opens com.weather.view;

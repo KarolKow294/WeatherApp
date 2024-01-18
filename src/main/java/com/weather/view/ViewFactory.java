@@ -11,8 +11,6 @@ import java.io.IOException;
 
 public class ViewFactory {
     public void showMainWindow() {
-        System.out.println("show main window called");
-
         BaseController controller = new MainViewController(this, "MainView.fxml");
         initializeStage(controller);
     }
