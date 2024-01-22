@@ -12,12 +12,15 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class MainViewController extends BaseController implements Initializable {
-    public static final int FIRST_FORECAST_AFTER_ONE_DAY = 7;
+    public static final int FIRST_FORECAST = 5;
     public static final int TOTAL_NUMBER_OF_FORECAST_DATA = 40;
-    public static final int FORECAST_DATA_PER_DAY = 7;
+    public static final int FORECAST_INCREMENT = 7;
     private WeatherService weatherService;
 
     @FXML
@@ -33,10 +36,28 @@ public class MainViewController extends BaseController implements Initializable 
     private TextField destinationCountryField;
 
     @FXML
-    private Label myWeatherLabel;
+    private Label myWeatherLabel1;
+    @FXML
+    private Label myWeatherLabel2;
+    @FXML
+    private Label myWeatherLabel3;
+    @FXML
+    private Label myWeatherLabel4;
+    @FXML
+    private Label myWeatherLabel5;
+    @FXML
+    private Label destinationWeatherLabel1;
+    @FXML
+    private Label destinationWeatherLabel2;
+    @FXML
+    private Label destinationWeatherLabel3;
+    @FXML
+    private Label destinationWeatherLabel4;
+    @FXML
+    private Label destinationWeatherLabel5;
 
     @FXML
-    private Label destinationWeatherLabel;
+    private Label errorLabel;
 
     public MainViewController(ViewFactory viewFactory, String fxmlName) {
         super(viewFactory, fxmlName);
@@ -49,14 +70,14 @@ public class MainViewController extends BaseController implements Initializable 
 
     @FXML
     private void checkWeatherAction() throws Exception {
-        Weather myWeather = checkWeatherForCity(cityField.getText(), countryField.getText());
-        Weather destinationWeather = checkWeatherForCity(destinationCityField.getText(), destinationCountryField.getText());
-
-        if (myWeather == null || destinationWeather == null){
-            //errorLabel.setText("Cities are not in the database");
-        } else {
+        errorLabel.setText("");
+        try {
+            Weather myWeather = checkWeatherForCity(cityField.getText(), countryField.getText());
+            Weather destinationWeather = checkWeatherForCity(destinationCityField.getText(), destinationCountryField.getText());
             displayWeather(myWeather, "displayLeftColumn");
             displayWeather(destinationWeather, "displayRightColumn");
+        } catch (Exception e) {
+            errorLabel.setText("Fields are empty or cities don't exist.");
         }
     }
 
@@ -66,29 +87,49 @@ public class MainViewController extends BaseController implements Initializable 
     }
 
     private void displayWeather(Weather weather, String column) throws Exception {
-        switch (column) {
-            case "displayLeftColumn":
-                //myWeatherLabel.setText("aaa");
-                //for(int i = FIRST_FORECAST_AFTER_ONE_DAY; i < TOTAL_NUMBER_OF_FORECAST_DATA; i++)
-                //{
-                    ForecastData forecastData = weather.getForecastData().get(1);
+        int labelCounter = 1;
 
-                    double temp = (Math.round((forecastData.temp - 272.15) * 100)) / 100.0;
-                    //Date date = new Date(forecastData.dt*1000);
-                    //Format format = new SimpleDateFormat("dd-MMMM-yyyy HH:mm:ss");
-                    //String formattedDate = format.format(date);
-                    //forecastDate.setText(formattedDate);
-                    myWeatherLabel.setText("temperature: " + temp + " C");
-                    myWeatherLabel.setText("pressure: "+ forecastData.pressure +" hPa");
-                    //humidityForecast.setText("humidity: "+ forecastData.humidity +"%");
+        for(int i = FIRST_FORECAST; i < TOTAL_NUMBER_OF_FORECAST_DATA ; i++) {
+            ForecastData forecastData = weather.getForecastData().get(i);
+            switch (column) {
+                case "displayLeftColumn":
+                    setDataToLabel(forecastData, labelCounter);
+                    break;
+                case "displayRightColumn":
+                    setDataToLabel(forecastData, labelCounter + 5);
+                    break;
+                default:
+                    throw new Exception("Wrong column to display");
+            }
+            labelCounter += 1;
+            i += FORECAST_INCREMENT;
+        }
+    }
 
-                    //i += FORECAST_DATA_PER_DAY;
-                //}
-            case "displayRightColumn":
-                destinationWeatherLabel.setText("aaa");
-                break;
-            default:
-                throw new Exception("Wrong column do display");
+    private void setDataToLabel(ForecastData forecastData, int labelCounter) throws Exception {
+        double temp = (Math.round((forecastData.temp - 272.15) * 100)) / 100.0;
+        Date date = new Date(forecastData.dt*1000);
+        Format format = new SimpleDateFormat("dd-MM-yyyy HH:ss");
+        String formattedDate = format.format(date);
+
+        String dataToSet = "Date: " + formattedDate + "\n"
+                + "Description: " + forecastData.main + "\n"
+                + "Temperature: " + temp + " C\n"
+                + "Pressure: " + forecastData.pressure +" hPa\n"
+                + "Humidity: " + forecastData.humidity +"%";
+
+        switch (labelCounter) {
+            case 1: myWeatherLabel1.setText(dataToSet); break;
+            case 2: myWeatherLabel2.setText(dataToSet); break;
+            case 3: myWeatherLabel3.setText(dataToSet); break;
+            case 4: myWeatherLabel4.setText(dataToSet); break;
+            case 5: myWeatherLabel5.setText(dataToSet); break;
+            case 6: destinationWeatherLabel1.setText(dataToSet); break;
+            case 7: destinationWeatherLabel2.setText(dataToSet); break;
+            case 8: destinationWeatherLabel3.setText(dataToSet); break;
+            case 9: destinationWeatherLabel4.setText(dataToSet); break;
+            case 10: destinationWeatherLabel5.setText(dataToSet); break;
+            default: throw new Exception("Wrong label to display");
         }
     }
 }

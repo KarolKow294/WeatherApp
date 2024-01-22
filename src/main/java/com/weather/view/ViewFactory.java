@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ViewFactory {
+    private static final int MAIN_WINDOW_HEIGHT = 740;
+    private static final int MAIN_WINDOW_WIDTH = 420;
+
     public void showMainWindow() {
         BaseController controller = new MainViewController(this, "MainView.fxml");
         initializeStage(controller);
@@ -28,6 +31,10 @@ public class ViewFactory {
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.setMinHeight(MAIN_WINDOW_HEIGHT);
+        stage.setMinWidth(MAIN_WINDOW_WIDTH);
+        stage.setMaxHeight(MAIN_WINDOW_HEIGHT);
+        stage.setMaxWidth(MAIN_WINDOW_WIDTH);
         stage.show();
     }
 }

@@ -7,31 +7,39 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="740.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="76.0" layoutY="21.0" text="Weather forecast for 5 days">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="78.0" layoutY="85.0" text="Your city">
+      <Label layoutX="78.0" layoutY="85.0" text="Your city" AnchorPane.leftAnchor="78.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="268.0" layoutY="85.0" text="Destination">
+      <Label layoutX="268.0" layoutY="85.0" text="Destination" AnchorPane.leftAnchor="270.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="countryField" layoutX="35.0" layoutY="127.0" promptText="Country" />
-      <TextField fx:id="cityField" layoutX="35.0" layoutY="170.0" promptText="City" />
-      <TextField fx:id="destinationCountryField" layoutX="236.0" layoutY="127.0" promptText="Country" />
-      <TextField fx:id="destinationCityField" layoutX="236.0" layoutY="170.0" promptText="City" />
-      <Label fx:id="myWeatherLabel" layoutX="34.0" layoutY="271.0" prefHeight="300.0" prefWidth="150.0" />
-      <Label fx:id="destinationWeatherLabel" layoutX="235.0" layoutY="271.0" prefHeight="300.0" prefWidth="150.0" />
-      <Button layoutX="36.0" layoutY="221.0" mnemonicParsing="false" onAction="#checkWeatherAction" prefHeight="26.0" prefWidth="350.0" text="Check Weather" />
-      <Line endX="0.199981689453125" endY="59.0" layoutX="211.0" layoutY="69.0" startX="0.199981689453125" startY="126.99998474121094" />
+      <TextField fx:id="countryField" focusTraversable="false" layoutX="35.0" layoutY="127.0" promptText="Country" AnchorPane.leftAnchor="35.0" />
+      <TextField fx:id="cityField" focusTraversable="false" layoutX="35.0" layoutY="170.0" promptText="City" AnchorPane.leftAnchor="35.0" />
+      <TextField fx:id="destinationCountryField" focusTraversable="false" layoutX="236.0" layoutY="127.0" promptText="Country" AnchorPane.leftAnchor="236.0" />
+      <TextField fx:id="destinationCityField" focusTraversable="false" layoutX="236.0" layoutY="170.0" promptText="City" AnchorPane.leftAnchor="236.0" />
+      <Label fx:id="myWeatherLabel1" layoutX="34.0" layoutY="259.0" prefHeight="94.0" prefWidth="150.0" />
+      <Label fx:id="destinationWeatherLabel1" layoutX="235.0" layoutY="259.0" prefHeight="94.0" prefWidth="150.0" />
+      <Button layoutX="36.0" layoutY="221.0" mnemonicParsing="false" onAction="#checkWeatherAction" prefHeight="26.0" prefWidth="350.0" text="Check Weather" AnchorPane.leftAnchor="35.0" />
+      <Line endX="0.199981689453125" endY="59.0" layoutX="211.0" layoutY="69.0" startX="0.199981689453125" startY="126.99998474121094" AnchorPane.leftAnchor="210.0" />
+      <Label fx:id="errorLabel" layoutX="36.0" layoutY="60.0" prefHeight="18.0" prefWidth="350.0" style="-fx-alignment: center; -fx-text-fill: red;" textAlignment="CENTER" />
+      <Label fx:id="myWeatherLabel2" layoutX="34.0" layoutY="353.0" prefHeight="94.0" prefWidth="150.0" />
+      <Label fx:id="myWeatherLabel3" layoutX="34.0" layoutY="447.0" prefHeight="94.0" prefWidth="150.0" />
+      <Label fx:id="myWeatherLabel4" layoutX="34.0" layoutY="541.0" prefHeight="94.0" prefWidth="150.0" />
+      <Label fx:id="myWeatherLabel5" layoutX="34.0" layoutY="635.0" prefHeight="94.0" prefWidth="150.0" />
+      <Label fx:id="destinationWeatherLabel2" layoutX="235.0" layoutY="353.0" prefHeight="94.0" prefWidth="150.0" />
+      <Label fx:id="destinationWeatherLabel3" layoutX="235.0" layoutY="447.0" prefHeight="94.0" prefWidth="150.0" />
+      <Label fx:id="destinationWeatherLabel4" layoutX="235.0" layoutY="541.0" prefHeight="94.0" prefWidth="150.0" />
+      <Label fx:id="destinationWeatherLabel5" layoutX="235.0" layoutY="635.0" prefHeight="94.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
